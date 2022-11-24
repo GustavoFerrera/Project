@@ -1,0 +1,301 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+
+    {% block titulo %}
+    <title>Access Control</title>
+    {% endblock %}
+
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+
+    {% block menu %}
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="">Access Control</a><button
+            class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
+                class="fas fa-bars"></i></button><!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="sair.html">Sair</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    {% endblock %}
+
+    {% block lateral %}
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Essencial</div>
+                        <a class="nav-link" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Painel
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                            aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Interface
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{% url 'teste' %}">Demissoes</a>
+                                <a class="nav-link" href="{% url 'ferias' %}">Ferias</a><a class="nav-link" href="{% url 'afastamentos' %}">Afastamentos</a>
+                                <a class="nav-link" href="{% url 'licencas' %}">Licencas</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Perfil
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="permaccess.html">Permissoes de acesso</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logado como:</div>
+                    ADMIN
+                </div>
+            </nav>
+        </div>
+        {% endblock %}
+
+        {% block conteudo %}
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Painel</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active"></li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-danger text-white mb-4">
+                                <div class="card-body">Demissoes<h2>90</h2></div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">Ver detalhadamente</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">Ferias<h2>23</h2></div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">Ver detalhadamente</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body">Afastamentos<h2>12</h2></div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">Ver detalhadamente</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">Licencas<h2>7</h2></div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">Ver detalhadamente</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Gráficos Gerais</div>
+                                <div class="card-body"><canvas id="graficos" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Calendário Geral</div>
+                                <div class="card-body"><canvas id="graficos" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-table mr-1"></i>Tabela de dados</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Numero de registro</th>
+                                            <th>Nome</th>
+                                            <th>Sede empresarial</th>
+                                            <th>Setor</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Numero de registro</th>
+                                            <th>Nome</th>
+                                            <th>Sede empresarial</th>
+                                            <th>Setor</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>103.874-0</td>
+                                            <td>Gustavo Ferreira do Nascimento</td>
+                                            <td>TA Sequoia</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td>104.373-2</td>
+                                            <td>Pietro Augusto</td>
+                                            <td>TA Sequoia</td>
+                                            <td>63</td>
+                                        </tr>
+                                        <tr>
+                                            <td>123.274-0</td>
+                                            <td>Adriana De Jesus Amorim</td>
+                                            <td>TA Sequoia</td>
+                                            <td>66</td>
+                                        </tr>
+                                        <tr>
+                                            <td>113.174-0</td>
+                                            <td>Ana Paula Gomes</td>
+                                            <td>TA Sequoia</td>
+                                            <td>22</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>143.834-0</td>
+                                            <td>Andréia Henrique Santiago</td>
+                                            <td>TA Sequoia</td>
+                                            <td>33</td>
+                                        </tr>
+                                        <tr>
+                                            <td>163.774-0</td>
+                                            <td>Bruno Westmann Prado</td>
+                                            <td>TA Sequoia</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td>111.833-0</td>
+                                            <td>Camila Reinaldo Bezerra</td>
+                                            <td>TA Sequoia</td>
+                                            <td>59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>131.574-0</td>
+                                            <td>Cosmo De Almeida Rigo</td>
+                                            <td>TA Sequoia</td>
+                                            <td>55</td>
+                                        </tr>
+                                        <tr>
+                                            <td>153.474-0</td>
+                                            <td>Cristiane Ishimoto</td>
+                                            <td>TA Sequoia</td>
+                                            <td>39</td>
+                                        </tr>
+                                        <tr>
+                                            <td>123.574-3</td>
+                                            <td>Dayse Alves Jora</td>
+                                            <td>TA Sequoia</td>
+                                            <td>23</td>
+                                        </tr>
+                                        <tr>
+                                            <td>132.334-6</td>
+                                            <td>Elan Adriano Silva</td>
+                                            <td>TA Sequoia</td>
+                                            <td>30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>133.974-1</td>
+                                            <td>Fábio Viana Piquet</td>
+                                            <td>TA Sequoia</td>
+                                            <td>22</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            {% endblock %}
+
+            {% block rodape %}
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Access Control 2022</div>
+                    </div>
+                </div>
+            </footer>
+            {% endblock %}
+
+        </div>
+    </div>
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script>
+        (function ($) {
+            "use strict";
+
+            var path = window.location.href;
+            $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function () {
+                if (this.href === path) {
+                    $(this).addClass("active");
+                }
+            });
+
+            $("#sidebarToggle").on("click", function (e) {
+                e.preventDefault();
+                $("body").toggleClass("sb-sidenav-toggled");
+            });
+        })(jQuery);
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+
+    </script>
+
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
